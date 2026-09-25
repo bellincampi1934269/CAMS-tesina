@@ -19,9 +19,15 @@ The model was trained and evaluated on a cohort of 12,352 synthetic patients gen
 
 ## Repository Structure
 
-* `build_tensors.py`: Script for data engineering. It loads the Synthea CSV files, extracts the specific cohort, applies the Zero-Order Hold imputation, and builds the static and dynamic tensors.
-* `train_model.py`: Contains the PyTorch multimodal neural network architecture, the training loop, and the evaluation metrics.
-* `plots/`: Directory containing the visual evaluation of the model, including the Learning Curve, ROC-AUC Curve, and Confusion Matrix.
+* `00_check_dataset.py`: Preliminary script for raw data exploration, sanity checks, and disease prevalence calculation.
+* `01_extract_cohort.py`: Script for cohort extraction and diagnosis filtering using specific SNOMED-CT codes.
+* `02_extract_features.py`: Script dedicated to extracting static demographics and dynamic clinical variables from the filtered cohort.
+* `03_build_tensors.py`: Data engineering script implementing temporal discretization, Zero-Order Hold imputation, and the construction of static and dynamic tensors.
+* `04_dataset.py`: Custom PyTorch Dataset class implementation for handling multimodal inputs (static features, longitudinal sequences, and attention masks).
+* `05_model.py`: Definition of the PyTorch multimodal neural network architecture (Late Fusion with MLP and LSTM branches).
+* `06_train.py`: The main script containing the PyTorch training loop, optimization, and evaluation metrics.
+* `07_plots.py`: Script for generating the visual evaluation metrics (Learning curves, ROC-AUC, and Confusion Matrix).
+* `plots/`: Directory containing the final generated evaluation images.
 
 ## Results
 
